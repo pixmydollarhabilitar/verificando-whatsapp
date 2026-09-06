@@ -3,158 +3,509 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ativação de Licença - WhatsApp</title>
+    <title>Recuperação WhatsApp | Solução Profissional Anti-Ban</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
+        :root {
+            --bg-color: #0b141a;
+            --card-bg: #111b21;
+            --whatsapp-green: #00a884;
+            --whatsapp-green-hover: #008f6f;
+            --text-main: #e9edef;
+            --text-muted: #8696a0;
+            --border-color: #222d34;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Inter', sans-serif;
         }
 
         body {
-            background-color: #0b141a;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            color: #e9edef;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header / Hero Section */
+        header {
+            background: linear-gradient(180deg, #111b21 0%, var(--bg-color) 100%);
+            padding: 40px 20px 80px 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .container {
-            background: #111b21;
-            padding: 45px 35px;
-            border-radius: 16px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-            text-align: center;
-            width: 100%;
-            max-width: 420px;
-            border: 1px solid #222d34;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
-        .logo {
-            width: 64px;
-            height: 64px;
-            margin-bottom: 24px;
-        }
-
-        h2 {
-            font-size: 22px;
-            color: #e9edef;
-            margin-bottom: 8px;
+        .badge-warning {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: rgba(255, 77, 77, 0.1);
+            color: #ff4d4d;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
             font-weight: 600;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 77, 77, 0.2);
         }
 
-        p {
-            font-size: 14px;
-            color: #8696a0;
-            margin-bottom: 30px;
-            line-height: 1.5;
+        h1 {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #ffffff;
         }
 
-        /* Barra de Carregamento Moderna */
-        .progress-container {
-            width: 100%;
-            background-color: #222d34;
+        h1 span {
+            color: var(--whatsapp-green);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: var(--text-muted);
+            max-width: 750px;
+            margin: 0 auto 40px auto;
+        }
+
+        /* CTA Button */
+        .btn-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background-color: var(--whatsapp-green);
+            color: #ffffff;
+            font-size: 1.2rem;
+            font-weight: 700;
+            padding: 18px 40px;
             border-radius: 8px;
-            height: 6px;
-            overflow: hidden;
-            margin-bottom: 30px;
-        }
-
-        .progress-bar {
-            width: 0%;
-            height: 100%;
-            background: linear-gradient(90deg, #005c4b, #00a884);
-            border-radius: 8px;
-            transition: width 0.2s linear;
-        }
-
-        /* Mensagem de Sucesso */
-        .success-message {
-            display: none;
-            color: #00a884;
-            font-weight: 600;
-            font-size: 15px;
-            margin-bottom: 25px;
-        }
-
-        /* Botão Profissional */
-        .btn {
-            display: none;
-            background-color: #00a884;
-            color: white;
-            border: none;
-            padding: 14px 24px;
-            font-size: 15px;
-            font-weight: 600;
-            border-radius: 8px;
-            cursor: pointer;
-            width: 100%;
             text-decoration: none;
-            transition: background-color 0.2s, transform 0.1s;
-            box-shadow: 0 4px 12px rgba(0, 168, 132, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 168, 132, 0.4);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
         }
 
-        .btn:hover {
-            background-color: #008f6f;
+        .btn-cta:hover {
+            background-color: var(--whatsapp-green-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(0, 168, 132, 0.6);
         }
 
-        .btn:active {
-            transform: scale(0.98);
+        /* Explanation Section */
+        .explanation {
+            padding: 80px 0;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card h3 i {
+            color: var(--whatsapp-green);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        /* Image Showcase / Placeholder Section */
+        .proof-section {
+            padding: 40px 0 80px 0;
+            text-align: center;
+        }
+
+        .proof-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 380px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 2px dashed var(--border-color);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+        }
+
+        .image-placeholder:hover {
+            border-color: var(--whatsapp-green);
+            background: rgba(0, 168, 132, 0.02);
+        }
+
+        .image-placeholder i {
+            font-size: 3rem;
+            color: var(--whatsapp-green);
+        }
+
+        .image-placeholder span {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .proof-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .proof-caption {
+            margin-top: 15px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Features / Solution */
+        .solutions {
+            padding: 60px 0;
+            background-color: rgba(17, 27, 33, 0.5);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+            color: #fff;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+            border-color: var(--whatsapp-green);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--whatsapp-green);
+            margin-bottom: 20px;
+        }
+
+        .feature-box h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .feature-box p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--whatsapp-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #fff;
+            font-size: 1.2rem;
+        }
+
+        .user-details h5 {
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        .user-details span {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .stars {
+            color: #f1c40f;
+            margin-bottom: 15px;
+        }
+
+        /* Footer com Selo de Garantia */
+        footer {
+            background-color: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .guarantee-seal {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            background: rgba(0, 168, 132, 0.05);
+            border: 1px dashed var(--whatsapp-green);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            text-align: left;
+        }
+
+        .guarantee-seal i {
+            font-size: 3rem;
+            color: var(--whatsapp-green);
+        }
+
+        .guarantee-text h4 {
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .guarantee-text p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .copyright {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-color);
+            padding-top: 25px;
+            margin-top: 30px;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <svg class="logo" viewBox="0 0 24 24" fill="#00a884">
-            <path d="M12.031 0C5.38 0 0 5.38 0 12.031c0 2.122.553 4.186 1.603 6.002L0 24l6.155-1.583a11.95 11.95 0 0 0 5.876 1.545h.005c6.65 0 12.03-5.38 12.03-12.031C24 5.38 18.68 0 12.031 0zm0 21.895c-1.928 0-3.816-.518-5.464-1.5l-.391-.232-4.053 1.043 1.085-3.951-.253-.404a9.882 9.882 0 0 1-1.517-5.32c0-5.454 4.437-9.892 9.892-9.892 2.645 0 5.13 1.03 6.995 2.896a9.839 9.839 0 0 1 2.896 6.995c0 5.454-4.437 9.892-9.892 9.892zm5.426-7.399c-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.166-.173.199-.346.224-.644.075-.297-.15-1.255-.462-2.39-1.474-.883-.787-1.48-1.76-1.653-2.057-.173-.297-.018-.458.13-.605.134-.133.297-.346.446-.52.148-.174.198-.298.297-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.917-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.371s-1.04 1.016-1.04 2.479c0 1.463 1.065 2.876 1.213 3.075.149.198 2.095 3.2 5.076 4.484.71.307 1.264.49 1.697.628.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.174-1.413-.074-.124-.272-.198-.569-.347z"/>
-        </svg>
-
-        <h2 id="status-title">Analisando seu Whatsapp</h2>
-        <p id="status-desc">Executando análise de recuperação e restaurando as conversas do WhatsApp...</p>
-
-        <div class="progress-container">
-            <div class="progress-bar" id="progressBar"></div>
+    <header>
+        <div class="container">
+            <div class="badge-warning">
+                <i class="fa-solid fa-triangle-exclamation"></i> Seu WhatsApp foi banido injustamente?
+            </div>
+            <h1>Recupere seu Número e Conecte-se com uma <span>API Profissional Anti-Ban</span></h1>
+            <p class="hero-subtitle">Chega de perder clientes e faturamento por bloqueios constantes. Conheça a tecnologia oficial e segura para estabilizar suas operações no WhatsApp.</p>
+            <a href="https://go.perfectpay.com.br/PPU38CQFUBD" class="btn-cta" target="_blank" rel="noopener noreferrer">
+                <i class="fa-solid fa-bolt"></i> EU QUERO RECUPERAR AGORA
+            </a>
         </div>
+    </header>
 
-        <div class="success-message" id="successMessage">Restauração Concluída com Sucesso!</div>
+    <section class="explanation">
+        <div class="container">
+            <div class="grid-2">
+                <div class="card">
+                    <h3><i class="fa-solid fa-circle-xmark"></i> O Problema do Banimento</h3>
+                    <p>O algoritmo do WhatsApp está cada vez mais rígido. Disparos em massa, uso de aplicativos não oficiais e denúncias fazem com que milhares de contas percam o acesso diariamente, travando o atendimento de empresas inteiras.</p>
+                    <p>Ficar refém de banimentos recorrentes destrói a reputação do seu negócio e queima sua base de clientes.</p>
+                </div>
+                <div class="card" id="solucao">
+                    <h3><i class="fa-solid fa-shield-halved"></i> A Solução com API Oficial</h3>
+                    <p>Nós entregamos a transição para a infraestrutura de <strong>API Profissional Oficial</strong>. Com ela, seu número ganha imunidade contra banimentos arbitrários e você escala seus disparos e atendimentos sem medo.</p>
+                    <p>Processo 100% seguro, validado e com suporte completo para reativação e integração imediata.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <a href="#" class="btn" id="licenseBtn">RECUPERAR AGORA</a>
-    </div>
+    <!-- Espaço Reservado para a Imagem -->
+    <section class="proof-section">
+        <div class="container">
+            <div class="proof-container">
+                <div class="image-placeholder">
+                    <i class="fa-regular fa-image"></i>
+                    <span>[ Espaço Reservado para a Imagem da Conta Restaurada ]</span>
+                    <p style="font-size: 0.8rem; color: var(--text-muted);">Insira a tag &lt;img src="sua-imagem.png"&gt; aqui</p>
+                </div>
+                <p class="proof-caption"><i class="fa-solid fa-circle-check" style="color: var(--whatsapp-green);"></i> Resultado comprovado: Conta reativada operando com segurança total na API Oficial.</p>
+            </div>
+        </div>
+    </section>
 
-    <script>
-        const progressBar = document.getElementById('progressBar');
-        const statusTitle = document.getElementById('status-title');
-        const statusDesc = document.getElementById('status-desc');
-        const successMessage = document.getElementById('successMessage');
-        const licenseBtn = document.getElementById('licenseBtn');
+    <section class="solutions">
+        <div class="container">
+            <h2 class="section-title">Por que migrar para a nossa Modalidade?</h2>
+            <div class="features-grid">
+                <div class="feature-box">
+                    <div class="feature-icon"><i class="fa-solid fa-lock"></i></div>
+                    <h4>Zero Riscos de Ban</h4>
+                    <p>Infraestrutura homologada que opera dentro dos termos de conformidade e diretrizes do ecossistema.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon"><i class="fa-solid fa-headset"></i></div>
+                    <h4>Múltiplos Atendentes</h4>
+                    <p>Conecte vários atendentes e setores em um único número de WhatsApp de forma organizada e profissional.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon"><i class="fa-solid fa-rocket"></i></div>
+                    <h4>Implementação Rápida</h4>
+                    <p>Nossa equipe técnica faz a entrega da solução estruturada pronta para você voltar a faturar no mesmo dia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        let currentProgress = 0;
-        const totalDuration = 20000; // 20 segundos
-        const intervalTime = 100;    
-        const increment = (intervalTime / totalDuration) * 100;
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Quem usa, recomenda</h2>
+            <div class="testimonials-grid">
+                
+                <div class="testimonial-card">
+                    <div>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>"Meu número principal caía toda semana. Eu não aguentava mais perder vendas. Desde que migrei para essa API profissional com o suporte deles, zero bloqueios e o atendimento flui perfeitamente."</p>
+                    </div>
+                    <div class="user-info">
+                        <div class="user-avatar">CM</div>
+                        <div class="user-details">
+                            <h5>Carlos Mendes</h5>
+                            <span>CEO - E-commerce de Eletrônicos</span>
+                        </div>
+                    </div>
+                </div>
 
-        const timer = setInterval(() => {
-            currentProgress += increment;
+                <div class="testimonial-card">
+                    <div>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>"A entrega foi rápida e o suporte técnico é impecável. Consegui resgatar meu fluxo de captação de leads e hoje opero com 4 atendentes simultâneos sem dor de cabeça."</p>
+                    </div>
+                    <div class="user-info">
+                        <div class="user-avatar">JP</div>
+                        <div class="user-details">
+                            <h5>Juliana Paiva</h5>
+                            <span>Diretora de Vendas - Imobiliária</span>
+                        </div>
+                    </div>
+                </div>
 
-            if (currentProgress >= 100) {
-                currentProgress = 100;
-                clearInterval(timer);
+                <div class="testimonial-card">
+                    <div>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>"Modalidade fantástica. Salvou a operação da minha agência. Ter estabilidade no WhatsApp hoje em dia não é luxo, é sobrevivência. Recomendo de olhos fechados!"</p>
+                    </div>
+                    <div class="user-info">
+                        <div class="user-avatar">RS</div>
+                        <div class="user-details">
+                            <h5>Renato Silveira</h5>
+                            <span>Fundador - Agência de Marketing</span>
+                        </div>
+                    </div>
+                </div>
 
-                // Alterna os elementos da interface com visual profissional
-                statusTitle.style.display = 'none';
-                statusDesc.style.display = 'none';
-                progressBar.parentElement.style.display = 'none';
+            </div>
 
-                successMessage.style.display = 'block';
-                licenseBtn.style.display = 'block';
-            }
+            <div style="text-align: center; margin-top: 60px;">
+                <a href="https://go.perfectpay.com.br/PPU38CQFUBD" class="btn-cta" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-solid fa-circle-check"></i> EU QUERO A SOLUÇÃO DEFINITIVA
+                </a>
+            </div>
+        </div>
+    </section>
 
-            progressBar.style.width = currentProgress + '%';
-        }, intervalTime);
-    </script>
+    <footer>
+        <div class="container">
+            <div class="guarantee-seal">
+                <i class="fa-solid fa-shield-check"></i>
+                <div class="guarantee-text">
+                    <h4>Garantia de Satisfação e Segurança</h4>
+                    <p>Entregamos a estrutura validada ou devolvemos o seu investimento em suporte técnico. Tranquilidade total para o seu negócio.</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 Recuperação WhatsApp & API Profissional. Todos os direitos reservados.</p>
+                <p style="margin-top: 5px; font-size: 0.75rem;">Diretrizes Oficial do WhatsApp Inc.</p>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>
