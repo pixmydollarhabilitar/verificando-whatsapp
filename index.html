@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ativação de Licença - WhatsApp</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #0b141a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #e9edef;
+        }
+
+        .container {
+            background: #111b21;
+            padding: 45px 35px;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            width: 100%;
+            max-width: 420px;
+            border: 1px solid #222d34;
+        }
+
+        .logo {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 24px;
+        }
+
+        h2 {
+            font-size: 22px;
+            color: #e9edef;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 14px;
+            color: #8696a0;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        /* Barra de Carregamento Moderna */
+        .progress-container {
+            width: 100%;
+            background-color: #222d34;
+            border-radius: 8px;
+            height: 6px;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #005c4b, #00a884);
+            border-radius: 8px;
+            transition: width 0.2s linear;
+        }
+
+        /* Mensagem de Sucesso */
+        .success-message {
+            display: none;
+            color: #00a884;
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 25px;
+        }
+
+        /* Botão Profissional */
+        .btn {
+            display: none;
+            background-color: #00a884;
+            color: white;
+            border: none;
+            padding: 14px 24px;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            text-decoration: none;
+            transition: background-color 0.2s, transform 0.1s;
+            box-shadow: 0 4px 12px rgba(0, 168, 132, 0.2);
+        }
+
+        .btn:hover {
+            background-color: #008f6f;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <svg class="logo" viewBox="0 0 24 24" fill="#00a884">
+            <path d="M12.031 0C5.38 0 0 5.38 0 12.031c0 2.122.553 4.186 1.603 6.002L0 24l6.155-1.583a11.95 11.95 0 0 0 5.876 1.545h.005c6.65 0 12.03-5.38 12.03-12.031C24 5.38 18.68 0 12.031 0zm0 21.895c-1.928 0-3.816-.518-5.464-1.5l-.391-.232-4.053 1.043 1.085-3.951-.253-.404a9.882 9.882 0 0 1-1.517-5.32c0-5.454 4.437-9.892 9.892-9.892 2.645 0 5.13 1.03 6.995 2.896a9.839 9.839 0 0 1 2.896 6.995c0 5.454-4.437 9.892-9.892 9.892zm5.426-7.399c-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.166-.173.199-.346.224-.644.075-.297-.15-1.255-.462-2.39-1.474-.883-.787-1.48-1.76-1.653-2.057-.173-.297-.018-.458.13-.605.134-.133.297-.346.446-.52.148-.174.198-.298.297-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.917-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.371s-1.04 1.016-1.04 2.479c0 1.463 1.065 2.876 1.213 3.075.149.198 2.095 3.2 5.076 4.484.71.307 1.264.49 1.697.628.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.174-1.413-.074-.124-.272-.198-.569-.347z"/>
+        </svg>
+
+        <h2 id="status-title">Processando Dados</h2>
+        <p id="status-desc">Executando análise de restauração e verificando integridade do WhatsApp...</p>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="success-message" id="successMessage">Restauração concluída com sucesso!</div>
+
+        <a href="#" class="btn" id="licenseBtn">Finalizar Licença de Uso</a>
+    </div>
+
+    <script>
+        const progressBar = document.getElementById('progressBar');
+        const statusTitle = document.getElementById('status-title');
+        const statusDesc = document.getElementById('status-desc');
+        const successMessage = document.getElementById('successMessage');
+        const licenseBtn = document.getElementById('licenseBtn');
+
+        let currentProgress = 0;
+        const totalDuration = 20000; // 20 segundos
+        const intervalTime = 100;    
+        const increment = (intervalTime / totalDuration) * 100;
+
+        const timer = setInterval(() => {
+            currentProgress += increment;
+
+            if (currentProgress >= 100) {
+                currentProgress = 100;
+                clearInterval(timer);
+
+                // Alterna os elementos da interface com visual profissional
+                statusTitle.style.display = 'none';
+                statusDesc.style.display = 'none';
+                progressBar.parentElement.style.display = 'none';
+
+                successMessage.style.display = 'block';
+                licenseBtn.style.display = 'block';
+            }
+
+            progressBar.style.width = currentProgress + '%';
+        }, intervalTime);
+    </script>
+
+</body>
+</html>
